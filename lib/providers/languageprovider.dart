@@ -7,6 +7,7 @@ class LanguageProvider with ChangeNotifier {
 
   final bool _isDarkMode = false;
   bool get isDarkMode => _isDarkMode;
+
   String _currentLocale = 'en';
   String get currentLocale => _currentLocale;
   set chnageLocale(String locale) {

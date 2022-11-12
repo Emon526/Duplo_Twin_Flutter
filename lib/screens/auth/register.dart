@@ -1,9 +1,11 @@
 import 'dart:developer';
 
 import 'package:duplotwin/homepage.dart';
+import 'package:duplotwin/providers/userprovider.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 
 import '../../consts/consts.dart';
 import '../../widgets/custombutton.dart';
@@ -17,11 +19,11 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
-  final passwordController = TextEditingController();
-  final emailController = TextEditingController();
-  final confirmpasswordController = TextEditingController();
-  final transctionController = TextEditingController();
-  final invitationController = TextEditingController();
+  final passwordController = TextEditingController(text: '12345678');
+  final emailController = TextEditingController(text: 'emon@gmail.com');
+  final confirmpasswordController = TextEditingController(text: '12345678');
+  final transctionController = TextEditingController(text: '12345');
+  final invitationController = TextEditingController(text: 'ABCD');
 
   final GlobalKey<FormState> _registerformKey = GlobalKey<FormState>();
   bool isObsecured = true;
@@ -195,6 +197,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       //     builder: (context) => const HomePage(),
                       //   ),
                       // );
+                      // context.read<UserProvider>().registerUser(
+                      //       invitationcode: invitationController.text.trim(),
+                      //       email: emailController.text.trim(),
+                      //       password: passwordController.text.trim(),
+                      //       transpassword: transctionController.text.trim(),
+                      //       context: context,
+                      //     );
                     },
                     buttontext: 'Register',
                   ),

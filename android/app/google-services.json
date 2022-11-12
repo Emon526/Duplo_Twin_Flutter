@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1080735933564",
+    "project_id": "duplotwin",
+    "storage_bucket": "duplotwin.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1080735933564:android:a92d2ee5b1055d23cc95f9",
+        "android_client_info": {
+          "package_name": "com.example.duplotwin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1080735933564-lrqmvvfedhsna8pe1u1erulgrvcaei6d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_pEyReP4YaqtXLrD6ygxk_zUB4POMVJc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1080735933564-lrqmvvfedhsna8pe1u1erulgrvcaei6d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
