@@ -6,33 +6,28 @@ import '../../consts/consts.dart';
 import '../../widgets/custombutton.dart';
 import 'register.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class ForgotPasswordScreen extends StatefulWidget {
+  const ForgotPasswordScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<ForgotPasswordScreen> createState() => _ForgotPasswordScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
-  final passwordController = TextEditingController();
+class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   final emailController = TextEditingController();
-  final GlobalKey<FormState> _loginformKey = GlobalKey<FormState>();
-  bool isObsecured = true;
-  bool isRemembered = false;
+  final GlobalKey<FormState> _resetpasswordformKey = GlobalKey<FormState>();
 
   @override
   void dispose() {
-    passwordController.dispose();
     emailController.dispose();
     super.dispose();
   }
 
   void validate({
     required String email,
-    required String password,
     required BuildContext context,
   }) async {
-    final FormState form = _loginformKey.currentState!;
+    final FormState form = _resetpasswordformKey.currentState!;
     if (form.validate()) {
       // await _checkPassword(password, context);
       // log(password);
@@ -60,7 +55,7 @@ class _LoginScreenState extends State<LoginScreen> {
           child: Padding(
             padding: const EdgeInsets.all(12.0),
             child: Form(
-              key: _loginformKey,
+              key: _resetpasswordformKey,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -76,8 +71,8 @@ class _LoginScreenState extends State<LoginScreen> {
                   TextFormField(
                     controller: emailController,
                     keyboardType: TextInputType.emailAddress,
-                    textInputAction: TextInputAction.next,
-                    // validator: Consts.emailValidator,
+                    textInputAction: TextInputAction.done,
+                    validator: Consts.emailValidator,
                     decoration: const InputDecoration(
                       labelText: 'Email',
                     ),
@@ -85,60 +80,14 @@ class _LoginScreenState extends State<LoginScreen> {
                   SizedBox(
                     height: size.height * 0.03,
                   ),
-                  TextFormField(
-                    obscureText: isObsecured,
-                    controller: passwordController,
-                    keyboardType: TextInputType.visiblePassword,
-                    textInputAction: TextInputAction.done,
-                    // validator: Consts.passwordValidator,
-                    decoration: InputDecoration(
-                      labelText: 'Password',
-                      suffix: InkWell(
-                        child: Icon(
-                          isObsecured ? Icons.visibility : Icons.visibility_off,
-                        ),
-                        onTap: () {
-                          setState(() {
-                            isObsecured = !isObsecured;
-                          });
-                        },
-                      ),
-                    ),
-                  ),
-                  Row(
-                    children: [
-                      Checkbox(
-                        value: isRemembered,
-                        onChanged: (value) {
-                          setState(() {
-                            isRemembered = value!;
-                          });
-                        },
-                      ),
-                      const Text('Remember username/password'),
-                    ],
-                  ),
                   CustomButton(
                     ontap: () {
                       validate(
                         context: context,
                         email: emailController.text.trim(),
-                        password: passwordController.text.trim(),
                       );
                     },
-                    buttontext: 'Login',
-                  ),
-                  Align(
-                    alignment: Alignment.centerRight,
-                    child: InkWell(
-                      onTap: () {
-                        // log('forgot password');
-                      },
-                      child: const Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: Text('Forget password?'),
-                      ),
-                    ),
+                    buttontext: 'Reset Password',
                   ),
                   SizedBox(
                     height: size.height * 0.1,
