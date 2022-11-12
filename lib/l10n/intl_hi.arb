@@ -1,3 +1,7 @@
 {
-  "welcomeText" : "स्वागत है"
+  "welcomeText" : "स्वागत है",
+  "announcementText" : "घोषणा",
+  "deposit" : "जमा",
+  "withdrawal" : "निकासी",
+  "salaryDescription" : "वेतन विवरण"
 }

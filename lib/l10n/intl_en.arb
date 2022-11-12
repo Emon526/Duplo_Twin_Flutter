@@ -1,3 +1,7 @@
 {
-  "welcomeText" : "Hi welcome"
+  "welcomeText" : "Hi welcome",
+  "announcementText" : "Announcement",
+  "deposit" : "Deposit",
+  "withdrawal" : "Withdrawal",
+  "salaryDescription" : "Salary Description"
 }

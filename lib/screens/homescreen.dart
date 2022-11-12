@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import '../providers/languageprovider.dart';
 import '../widgets/custombutton.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -14,6 +17,7 @@ class HomeScreen extends StatelessWidget {
         leading: GestureDetector(
             onTap: () {
               print('call');
+              context.read<LanguageProvider>().chnageLocale = 'en';
             },
             child: const Icon(Icons.headset_mic_outlined)),
         title: Image.asset(
@@ -26,6 +30,7 @@ class HomeScreen extends StatelessWidget {
             padding: const EdgeInsets.all(16.0),
             child: GestureDetector(
                 onTap: () {
+                  context.read<LanguageProvider>().chnageLocale = 'hi';
                   print('translate');
                 },
                 child: const Icon(Icons.translate)),
@@ -44,9 +49,9 @@ class HomeScreen extends StatelessWidget {
               ),
               alignment: Alignment.center,
               height: size.height * 0.3,
-              child: const Text(
-                'Announcement',
-                style: TextStyle(
+              child: Text(
+                AppLocalizations.of(context)!.announcementText,
+                style: const TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
                 ),
@@ -57,21 +62,21 @@ class HomeScreen extends StatelessWidget {
             ),
             CustomButton(
               ontap: () {},
-              buttontext: 'Deposit',
+              buttontext: AppLocalizations.of(context)!.deposit,
             ),
             SizedBox(
               height: size.height * 0.05,
             ),
             CustomButton(
               ontap: () {},
-              buttontext: 'Withdrawal',
+              buttontext: AppLocalizations.of(context)!.withdrawal,
             ),
             SizedBox(
               height: size.height * 0.05,
             ),
             CustomButton(
               ontap: () {},
-              buttontext: 'Salary Description',
+              buttontext: AppLocalizations.of(context)!.salaryDescription,
             ),
           ],
         ),
