@@ -74,24 +74,49 @@ class Styles {
         cursorColor: Colors.deepOrangeAccent,
         selectionHandleColor: Colors.deepOrangeAccent,
       ),
+      checkboxTheme: CheckboxThemeData(
+        // checkColor: MaterialStateProperty.resolveWith<Color?>(
+        //     (Set<MaterialState> states) {
+        //   if (states.contains(MaterialState.disabled)) {
+        //     return null;
+        //   }
+        //   if (states.contains(MaterialState.selected)) {
+        //     return Colors.deepOrangeAccent;
+        //   }
+        //   return null;
+        // }),
+        fillColor: MaterialStateProperty.resolveWith<Color?>(
+            (Set<MaterialState> states) {
+          if (states.contains(MaterialState.disabled)) {
+            return null;
+          }
+          if (states.contains(MaterialState.selected)) {
+            return Colors.deepOrangeAccent;
+          }
+          return null;
+        }),
+      ),
       inputDecorationTheme: InputDecorationTheme(
         labelStyle: const TextStyle(
-          color: Colors.deepOrangeAccent,
+          color: Colors.grey,
         ),
         focusColor: Colors.red,
         enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
           borderSide: BorderSide(
             color: isDarkTheme ? Colors.grey : Colors.grey,
           ),
         ),
-        border: const OutlineInputBorder(
-          borderSide: BorderSide(
+        border: OutlineInputBorder(
+          borderSide: const BorderSide(
             width: 2.0,
             color: Colors.deepOrangeAccent,
           ),
+          borderRadius: BorderRadius.circular(10),
         ),
-        focusedBorder: const OutlineInputBorder(
-          borderSide: BorderSide(
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+          borderSide: const BorderSide(
             width: 2.0,
             color: Colors.deepOrangeAccent,
           ),
