@@ -1,12 +1,10 @@
-import 'package:duplotwin/screens/auth/login.dart';
-import 'package:duplotwin/screens/auth/register.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'consts/style.dart';
-import 'homepage.dart';
 import 'providers/languageprovider.dart';
+import 'screens/homescreen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -51,7 +49,7 @@ class _MyAppState extends State<MyApp> {
           localizationsDelegates: AppLocalizations.localizationsDelegates,
           supportedLocales: AppLocalizations.supportedLocales,
           title: 'Duplo Twin',
-          home: const RegisterScreen(),
+          home: const HomeScreen(),
         );
       },
     );
