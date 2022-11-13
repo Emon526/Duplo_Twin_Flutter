@@ -28,14 +28,14 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   LanguageProvider languageProvider = LanguageProvider();
-  void checkCurrentTheme() async {
+  void checkCurrentLanguage() async {
     languageProvider.chnageLocale =
         await languageProvider.languagePreference.getLanguage();
   }
 
   @override
   void initState() {
-    checkCurrentTheme();
+    checkCurrentLanguage();
     super.initState();
   }
 
