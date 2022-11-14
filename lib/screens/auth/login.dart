@@ -1,8 +1,10 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 
 import '../../consts/consts.dart';
+import '../../providers/userprovider.dart';
 import '../../widgets/custombutton.dart';
 import 'register.dart';
 
@@ -14,8 +16,8 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final passwordController = TextEditingController();
-  final emailController = TextEditingController();
+  final passwordController = TextEditingController(text: '12345678');
+  final emailController = TextEditingController(text: 'emon@gmail.com');
   final GlobalKey<FormState> _loginformKey = GlobalKey<FormState>();
   bool isObsecured = true;
   bool isRemembered = false;
@@ -37,6 +39,11 @@ class _LoginScreenState extends State<LoginScreen> {
       // await _checkPassword(password, context);
       // log(password);
       // log(email);
+      context.read<UserProvider>().loginUser(
+            email: emailController.text.trim(),
+            password: passwordController.text.trim(),
+            context: context,
+          );
     } else {
       const snackbar = SnackBar(
         content: Text("Invalid form data"),

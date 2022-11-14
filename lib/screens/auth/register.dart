@@ -182,7 +182,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     height: size.height * 0.02,
                   ),
                   CustomButton(
-                    ontap: () {
+                    ontap: () async {
                       // validate(
                       //   context: context,
                       //   email: emailController.text.trim(),
@@ -197,13 +197,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       //     builder: (context) => const HomePage(),
                       //   ),
                       // );
-                      // context.read<UserProvider>().registerUser(
-                      //       invitationcode: invitationController.text.trim(),
-                      //       email: emailController.text.trim(),
-                      //       password: passwordController.text.trim(),
-                      //       transpassword: transctionController.text.trim(),
-                      //       context: context,
-                      //     );
+                      await context.read<UserProvider>().registerUser(
+                            invitationcode: invitationController.text.trim(),
+                            email: emailController.text.trim(),
+                            password: passwordController.text.trim(),
+                            transpassword: transctionController.text.trim(),
+                            context: context,
+                          );
                     },
                     buttontext: 'Register',
                   ),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../providers/languageprovider.dart';
+import '../providers/userprovider.dart';
 import '../widgets/custombutton.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -50,7 +51,8 @@ class HomeScreen extends StatelessWidget {
               alignment: Alignment.center,
               height: size.height * 0.3,
               child: Text(
-                AppLocalizations.of(context)!.announcementText,
+                // AppLocalizations.of(context)!.announcementText,
+                context.watch<UserProvider>().currentUser!.email!,
                 style: const TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
@@ -61,14 +63,18 @@ class HomeScreen extends StatelessWidget {
               height: size.height * 0.1,
             ),
             CustomButton(
-              ontap: () {},
+              ontap: () {
+                context.read<UserProvider>().signOut();
+              },
               buttontext: AppLocalizations.of(context)!.deposit,
             ),
             SizedBox(
               height: size.height * 0.05,
             ),
             CustomButton(
-              ontap: () {},
+              ontap: () {
+                context.read<UserProvider>().deleteAccount();
+              },
               buttontext: AppLocalizations.of(context)!.withdrawal,
             ),
             SizedBox(

@@ -1,4 +1,8 @@
+import 'dart:developer';
+
 import 'package:duplotwin/providers/userprovider.dart';
+import 'package:duplotwin/root.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -47,11 +51,16 @@ class _MyAppState extends State<MyApp> {
           create: (context) => languageProvider,
         ),
         ChangeNotifierProvider(
-          create: (context) => UserProvider(),
+          create: (context) => UserProvider(FirebaseAuth.instance),
+        ),
+        StreamProvider(
+          create: (context) => context.read<UserProvider>().authstatechanges,
+          initialData: null,
         ),
       ],
       builder: (context, child) {
-        // log(context.watch<LanguageProvider>().currentLocale);
+        log('main screen log');
+        // context.watch<UserProvider>().authstatechanges;
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           theme: Styles.themeData(
@@ -60,7 +69,7 @@ class _MyAppState extends State<MyApp> {
           localizationsDelegates: AppLocalizations.localizationsDelegates,
           supportedLocales: AppLocalizations.supportedLocales,
           title: 'Duplo Twin',
-          home: const RegisterScreen(),
+          home: const Root(),
         );
       },
     );
