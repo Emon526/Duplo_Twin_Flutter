@@ -58,7 +58,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
             transpassword: transactionpassword,
             context: context,
           );
-      Navigator.pop(context);
+      // Navigator.pop(context);
     } else {
       const snackbar = SnackBar(
         content: Text("Invalid form data"),

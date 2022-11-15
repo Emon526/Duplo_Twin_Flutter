@@ -36,9 +36,6 @@ class _LoginScreenState extends State<LoginScreen> {
   }) async {
     final FormState form = _loginformKey.currentState!;
     if (form.validate()) {
-      // await _checkPassword(password, context);
-      // log(password);
-      // log(email);
       context.read<UserProvider>().loginUser(
             email: emailController.text.trim(),
             password: passwordController.text.trim(),

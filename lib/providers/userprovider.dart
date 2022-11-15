@@ -12,9 +12,10 @@ class UserProvider with ChangeNotifier {
   final FirebaseAuth firebaseAuth;
   UserProvider(this.firebaseAuth);
   var firestore = FirebaseFirestore.instance;
-
+  // User? _currentuser;
   User? get currentUser => firebaseAuth.currentUser;
-  Stream<User?> get authstatechanges => firebaseAuth.idTokenChanges();
+  Stream<User?> get authstatechanges => firebaseAuth.authStateChanges();
+  // Stream<User?> get authstatechanges => checkstate();
 
   Future<void> registerUser({
     required String invitationcode,
@@ -54,7 +55,6 @@ class UserProvider with ChangeNotifier {
         //   );
         //   ScaffoldMessenger.of(context).showSnackBar(snackbar);
         // });
-        notifyListeners();
       } else {
         const snackbar = SnackBar(
           content: Text("Input All Field"),
@@ -95,6 +95,14 @@ class UserProvider with ChangeNotifier {
     notifyListeners();
   }
 
+  // checkstate() {
+  //   firebaseAuth.authStateChanges().listen((event) {
+  //     // user = newUser;
+  //     log(event!.email!.toString());
+  //     notifyListeners();
+  //   });
+  // }
+
   Future<void> signOut() async {
     await firebaseAuth.signOut();
 
@@ -103,7 +111,6 @@ class UserProvider with ChangeNotifier {
 
   Future<void> deleteAccount() async {
     await firebaseAuth.currentUser!.delete();
-
     notifyListeners();
   }
 }
