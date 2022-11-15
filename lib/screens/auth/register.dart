@@ -1,7 +1,10 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:developer';
 
 import 'package:duplotwin/homepage.dart';
 import 'package:duplotwin/providers/userprovider.dart';
+import 'package:duplotwin/screens/homescreen.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -48,13 +51,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
   }) async {
     final FormState form = _registerformKey.currentState!;
     if (form.validate()) {
-      // await _checkPassword(password, context);
-
-      log(email);
-      log(password);
-      log(confirmpassword);
-      log(transactionpassword);
-      log(invitationcode);
+      await context.read<UserProvider>().registerUser(
+            invitationcode: invitationcode,
+            email: email,
+            password: password,
+            transpassword: transactionpassword,
+            context: context,
+          );
+      Navigator.pop(context);
     } else {
       const snackbar = SnackBar(
         content: Text("Invalid form data"),
@@ -183,27 +187,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ),
                   CustomButton(
                     ontap: () async {
-                      // validate(
-                      //   context: context,
-                      //   email: emailController.text.trim(),
-                      //   password: passwordController.text.trim(),
-                      //   confirmpassword: confirmpasswordController.text.trim(),
-                      //   transactionpassword: transctionController.text.trim(),
-                      //   invitationcode: invitationController.text.trim(),
-                      // );
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(
-                      //     builder: (context) => const HomePage(),
-                      //   ),
-                      // );
-                      await context.read<UserProvider>().registerUser(
-                            invitationcode: invitationController.text.trim(),
-                            email: emailController.text.trim(),
-                            password: passwordController.text.trim(),
-                            transpassword: transctionController.text.trim(),
-                            context: context,
-                          );
+                      validate(
+                        context: context,
+                        email: emailController.text.trim(),
+                        password: passwordController.text.trim(),
+                        confirmpassword: confirmpasswordController.text.trim(),
+                        transactionpassword: transctionController.text.trim(),
+                        invitationcode: invitationController.text.trim(),
+                      );
                     },
                     buttontext: 'Register',
                   ),

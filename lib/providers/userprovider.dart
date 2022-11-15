@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -31,6 +33,10 @@ class UserProvider with ChangeNotifier {
           email: email,
           password: password,
         );
+        const snackbar = SnackBar(
+          content: Text("SIGN up Succesful"),
+        );
+        ScaffoldMessenger.of(context).showSnackBar(snackbar);
 
         // UserModel user = UserModel(
         //   email: email,
@@ -48,6 +54,7 @@ class UserProvider with ChangeNotifier {
         //   );
         //   ScaffoldMessenger.of(context).showSnackBar(snackbar);
         // });
+        notifyListeners();
       } else {
         const snackbar = SnackBar(
           content: Text("Input All Field"),
