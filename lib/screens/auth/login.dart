@@ -20,7 +20,6 @@ class _LoginScreenState extends State<LoginScreen> {
   final emailController = TextEditingController(text: 'emon@gmail.com');
   final GlobalKey<FormState> _loginformKey = GlobalKey<FormState>();
   bool isObsecured = true;
-  bool isRemembered = false;
 
   @override
   void dispose() {
@@ -102,9 +101,9 @@ class _LoginScreenState extends State<LoginScreen> {
                           isObsecured ? Icons.visibility : Icons.visibility_off,
                         ),
                         onTap: () {
-                          setState(() {
-                            isObsecured = !isObsecured;
-                          });
+                          // setState(() {
+                          //   isObsecured = !isObsecured;
+                          // });
                         },
                       ),
                     ),
@@ -112,11 +111,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   Row(
                     children: [
                       Checkbox(
-                        value: isRemembered,
+                        value: context.watch<UserProvider>().isRemembered,
                         onChanged: (value) {
-                          setState(() {
-                            isRemembered = value!;
-                          });
+                          context.read<UserProvider>().isRemembered = value!;
                         },
                       ),
                       const Text('Remember username/password'),

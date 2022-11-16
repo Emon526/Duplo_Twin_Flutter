@@ -17,6 +17,13 @@ class UserProvider with ChangeNotifier {
   Stream<User?> get authstatechanges => firebaseAuth.authStateChanges();
   // Stream<User?> get authstatechanges => checkstate();
 
+  bool _isRemembered = false;
+  bool get isRemembered => _isRemembered;
+  set isRemembered(bool value) {
+    _isRemembered = value;
+    notifyListeners();
+  }
+
   Future<void> registerUser({
     required String invitationcode,
     required String email,
@@ -77,6 +84,9 @@ class UserProvider with ChangeNotifier {
         await firebaseAuth
             .signInWithEmailAndPassword(email: email, password: password)
             .then((value) async {
+          if (isRemembered) {
+            log('save');
+          }
           const snackbar = SnackBar(
             content: Text("SIGN In Succesful.enjoy"),
           );
