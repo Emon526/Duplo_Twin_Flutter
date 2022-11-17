@@ -11,9 +11,6 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'consts/style.dart';
 import 'firebase_options.dart';
 import 'providers/languageprovider.dart';
-import 'screens/auth/register.dart';
-import 'screens/auth/resetpassword.dart';
-import 'screens/homescreen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
