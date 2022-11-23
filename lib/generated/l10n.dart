@@ -59,6 +59,46 @@ class S {
       args: [],
     );
   }
+
+  /// `Announcement`
+  String get announcementText {
+    return Intl.message(
+      'Announcement',
+      name: 'announcementText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Deposit`
+  String get deposit {
+    return Intl.message(
+      'Deposit',
+      name: 'deposit',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Withdrawal`
+  String get withdrawal {
+    return Intl.message(
+      'Withdrawal',
+      name: 'withdrawal',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Salary Description`
+  String get salaryDescription {
+    return Intl.message(
+      'Salary Description',
+      name: 'salaryDescription',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
@@ -67,7 +107,9 @@ class AppLocalizationDelegate extends LocalizationsDelegate<S> {
   List<Locale> get supportedLocales {
     return const <Locale>[
       Locale.fromSubtags(languageCode: 'en'),
+      Locale.fromSubtags(languageCode: 'bn'),
       Locale.fromSubtags(languageCode: 'hi'),
+      Locale.fromSubtags(languageCode: 'zh', countryCode: 'CN'),
     ];
   }
 

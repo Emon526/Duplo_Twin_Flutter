@@ -1,7 +1,7 @@
+import 'package:duplotwin/widgets/languagewidget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../providers/languageprovider.dart';
 import '../providers/userprovider.dart';
 import '../widgets/custombutton.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -18,7 +18,6 @@ class HomeScreen extends StatelessWidget {
         leading: GestureDetector(
             onTap: () {
               print('call');
-              context.read<LanguageProvider>().chnageLocale = 'en';
             },
             child: const Icon(Icons.headset_mic_outlined)),
         title: Image.asset(
@@ -26,15 +25,10 @@ class HomeScreen extends StatelessWidget {
           height: size.height * 0.1,
           // width: 100,
         ),
-        actions: [
+        actions: const [
           Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: GestureDetector(
-                onTap: () {
-                  context.read<LanguageProvider>().chnageLocale = 'hi';
-                  print('translate');
-                },
-                child: const Icon(Icons.translate)),
+            padding: EdgeInsets.all(16.0),
+            child: LanguagePickerWidget(),
           ),
         ],
       ),
