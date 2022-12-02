@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
-import '../../consts/consts.dart';
 import '../../providers/userprovider.dart';
 import '../../widgets/custombutton.dart';
 import 'register.dart';
