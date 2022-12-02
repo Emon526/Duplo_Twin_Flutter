@@ -1,7 +1,3 @@
-import 'dart:developer';
-
-import 'package:duplotwin/providers/userprovider.dart';
-import 'package:duplotwin/root.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +7,8 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'consts/style.dart';
 import 'firebase_options.dart';
 import 'providers/languageprovider.dart';
+import 'providers/userprovider.dart';
+import 'root.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -56,7 +54,7 @@ class _MyAppState extends State<MyApp> {
         ),
       ],
       builder: (context, child) {
-        log('main screen log');
+        // log('main screen log');
         // context.watch<UserProvider>().authstatechanges;
         return MaterialApp(
           debugShowCheckedModeBanner: false,
