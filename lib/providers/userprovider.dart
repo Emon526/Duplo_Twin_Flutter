@@ -12,10 +12,9 @@ class UserProvider with ChangeNotifier {
   final FirebaseAuth firebaseAuth;
   UserProvider(this.firebaseAuth);
   var firestore = FirebaseFirestore.instance;
-  // User? _currentuser;
+
   User? get currentUser => firebaseAuth.currentUser;
   Stream<User?> get authstatechanges => firebaseAuth.authStateChanges();
-  // Stream<User?> get authstatechanges => checkstate();
 
   bool _isRemembered = false;
   bool get isRemembered => _isRemembered;
@@ -41,35 +40,27 @@ class UserProvider with ChangeNotifier {
           email: email,
           password: password,
         );
-        const snackbar = SnackBar(
-          content: Text("SIGN up Succesful"),
-        );
-        ScaffoldMessenger.of(context).showSnackBar(snackbar);
 
-        // UserModel user = UserModel(
-        //   email: email,
-        //   invitationcode: invitationcode,
-        //   transpassword: transpassword,
-        //   uid: cred.user!.uid,
-        // );
-        // await firestore
-        //     .collection('users')
-        //     .doc(cred.user!.uid)
-        //     .set(user.toJson())
-        //     .then((value) {
-        //   const snackbar = SnackBar(
-        //     content: Text("SIGN UP Succesful.please log in"),
-        //   );
-        //   ScaffoldMessenger.of(context).showSnackBar(snackbar);
-        // });
+        UserModel user = UserModel(
+          email: email,
+          invitationcode: invitationcode,
+          transpassword: transpassword,
+          uid: cred.user!.uid,
+        );
+        await firestore
+            .collection('users')
+            .doc(cred.user!.uid)
+            .set(user.toJson());
+
+        Navigator.pop(context);
       } else {
         const snackbar = SnackBar(
           content: Text("Input All Field"),
         );
         ScaffoldMessenger.of(context).showSnackBar(snackbar);
       }
-    } catch (e) {
-      final snackbar = SnackBar(content: Text(e.toString()));
+    } on FirebaseAuthException catch (e) {
+      final snackbar = SnackBar(content: Text(e.message.toString()));
       ScaffoldMessenger.of(context).showSnackBar(snackbar);
     }
     notifyListeners();
@@ -87,10 +78,6 @@ class UserProvider with ChangeNotifier {
           if (isRemembered) {
             log('save');
           }
-          const snackbar = SnackBar(
-            content: Text("SIGN In Succesful.enjoy"),
-          );
-          ScaffoldMessenger.of(context).showSnackBar(snackbar);
         });
       } else {
         const snackbar = SnackBar(
@@ -98,20 +85,12 @@ class UserProvider with ChangeNotifier {
         );
         ScaffoldMessenger.of(context).showSnackBar(snackbar);
       }
-    } catch (e) {
-      final snackbar = SnackBar(content: Text(e.toString()));
+    } on FirebaseAuthException catch (e) {
+      final snackbar = SnackBar(content: Text(e.message.toString()));
       ScaffoldMessenger.of(context).showSnackBar(snackbar);
     }
     notifyListeners();
   }
-
-  // checkstate() {
-  //   firebaseAuth.authStateChanges().listen((event) {
-  //     // user = newUser;
-  //     log(event!.email!.toString());
-  //     notifyListeners();
-  //   });
-  // }
 
   Future<void> signOut() async {
     await firebaseAuth.signOut();
