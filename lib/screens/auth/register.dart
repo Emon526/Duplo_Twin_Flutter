@@ -2,7 +2,6 @@
 
 import 'dart:developer';
 
-import 'package:duplotwin/homepage.dart';
 import 'package:duplotwin/providers/userprovider.dart';
 import 'package:duplotwin/screens/homescreen.dart';
 import 'package:flutter/gestures.dart';
