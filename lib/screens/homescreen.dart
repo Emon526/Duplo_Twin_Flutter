@@ -45,8 +45,7 @@ class HomePage extends StatelessWidget {
               alignment: Alignment.center,
               height: size.height * 0.3,
               child: Text(
-                // AppLocalizations.of(context)!.announcementText,
-                context.watch<UserProvider>().currentUser!.email!,
+                AppLocalizations.of(context)!.announcementText,
                 style: const TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
