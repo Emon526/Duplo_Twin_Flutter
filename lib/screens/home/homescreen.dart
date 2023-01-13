@@ -1,10 +1,11 @@
+import 'package:duplotwin/screens/home/withdrawalscreen.dart';
 import 'package:duplotwin/widgets/languagewidget.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
-import '../providers/userprovider.dart';
-import '../widgets/custombutton.dart';
+import '../../widgets/custombutton.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+import 'depositscreen.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -57,7 +58,12 @@ class HomePage extends StatelessWidget {
             ),
             CustomButton(
               ontap: () {
-                context.read<UserProvider>().signOut();
+                // context.read<UserProvider>().signOut();
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => const DipositScreen(),
+                  ),
+                );
               },
               buttontext: AppLocalizations.of(context)!.deposit,
             ),
@@ -66,7 +72,12 @@ class HomePage extends StatelessWidget {
             ),
             CustomButton(
               ontap: () {
-                context.read<UserProvider>().deleteAccount();
+                // context.read<UserProvider>().deleteAccount();
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => const WithdrawalPage(),
+                  ),
+                );
               },
               buttontext: AppLocalizations.of(context)!.withdrawal,
             ),

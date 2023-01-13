@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
-import 'screens/homescreen.dart';
-import 'screens/profilescreen.dart';
-import 'screens/taskscreen.dart';
-import 'screens/teamscreen.dart';
-import 'screens/vipscreen.dart';
+import 'screens/home/homescreen.dart';
+import 'screens/profile/profilescreen.dart';
+import 'screens/raferral/refferscreen.dart';
+import 'screens/packages/packagesscreen.dart';
+import 'screens/notification/notificationscreen.dart';
 
 class ButtomNavBar extends StatefulWidget {
   const ButtomNavBar({Key? key}) : super(key: key);
@@ -26,9 +26,9 @@ class _ButtomNavBarState extends State<ButtomNavBar> {
         controller: _controller,
         screens: const [
           HomePage(),
-          TaskPage(),
-          TeamPage(),
-          VipPage(),
+          RefferPage(),
+          PackagesPage(),
+          NotificationPage(),
           ProfilePage(),
         ],
         items: _navBarsItems(),
@@ -45,20 +45,20 @@ class _ButtomNavBarState extends State<ButtomNavBar> {
         name: "Home",
       ),
       _buildNavbarItem(
-        icon: Icons.task,
-        name: "Task",
-      ),
-      _buildNavbarItem(
         icon: Icons.groups,
-        name: "Team",
+        name: "Raferral",
       ),
       _buildNavbarItem(
-        icon: Icons.diamond,
-        name: "VIP",
+        icon: Icons.hub,
+        name: "Packages",
+      ),
+      _buildNavbarItem(
+        icon: Icons.email,
+        name: "Notifications",
       ),
       _buildNavbarItem(
         icon: Icons.person,
-        name: "Mine",
+        name: "Profile",
       ),
     ];
   }
